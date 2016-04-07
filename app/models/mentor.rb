@@ -5,15 +5,15 @@ class Mentor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
 	def self.connect_to_linkedin(auth, signed_in_resource = nil)
-		user = User.where(:provider => auth.provider, :uid => auth.uid).first
-		if user
-			return user
+		mentor = Mentor.where(:provider => auth.provider, :uid => auth.uid).first
+		if mentor
+			return mentor
 		else
-			registered_user = User.where(:email => auth.info.email).first
-			if registered_user
-				return registered_user
+			registered_mentor = Mentor.where(:email => auth.info.email).first
+			if registered_mentor
+				return registered_mentor
 			else
-				user = User.create(name:auth.info.first_name,
+				mentor = Mentor.create(name:auth.info.first_name,
 									provider:auth.provider,
 									uid:auth.uid,
 									email:auth.info.email,
