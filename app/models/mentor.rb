@@ -5,7 +5,7 @@ class Mentor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   def self.find_or_create_from_auth_hash(auth_hash)
-  	mentor = Mentor.where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_create
+  	mentor = Mentor.where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
   	mentor.update(
   		name: auth_hash.extra.raw_info.name,
   		token: auth_hash.credentials.token,
