@@ -7,7 +7,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			sign_in_and_redirect @mentor, :event => :authentication
 		else
 			session["devise.linkedin_uid"] = request.env["omniauth.auth"]
-			redirect_to new_mentor_registration_url
+			redirect_to root_url
 		end
 	end
 end
