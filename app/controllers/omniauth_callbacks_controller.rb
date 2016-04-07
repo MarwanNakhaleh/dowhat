@@ -5,6 +5,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		if @mentor.persisted?
 			flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
 			sign_in_and_redirect @mentor, :event => :authentication
+			redirect_to root_url
 		else
 			session["devise.linkedin_uid"] = request.env["omniauth.auth"]
 			redirect_to root_url
