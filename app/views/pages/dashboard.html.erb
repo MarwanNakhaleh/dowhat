@@ -1,0 +1,6 @@
+<% if mentor_signed_in? %>
+	Signed in as <%= current_mentor.name %>. Not you?<br>
+	<%= link_to "Sign out", destroy_mentor_session_path, :method => :delete %>
+<% else %>
+	<%= link_to "Sign in with Linkedin", mentor_omniauth_authorize_path(:linkedin) %>
+<% end %>
