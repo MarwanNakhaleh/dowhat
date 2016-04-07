@@ -14,6 +14,7 @@ gem 'ransack'
 gem 'will_paginate'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-oauth2'
 gem 'omniauth-linkedin-oauth2'
 gem 'figaro'
 
