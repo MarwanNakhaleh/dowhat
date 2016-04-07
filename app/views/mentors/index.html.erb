@@ -1,0 +1,5 @@
+<% @mentors = Mentor.all %>
+<% @mentors.each do |m| %>
+  <%= m.name %><br/>
+  <%= m.email %><br/>
+<% end %>

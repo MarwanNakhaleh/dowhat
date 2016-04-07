@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :mentors, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  match '/mentors',   to: 'mentors#index',   via: 'get'
+
+  devise_for :mentors, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }, :skip => [:registrations]
+    as :mentor do
+      get 'mentors/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      patch 'mentors/:id' => 'devise/registrations#update', :as => 'user_registration'
+    end
+  
   get 'pages/dashboard'
   root 'pages#dashboard'
 
