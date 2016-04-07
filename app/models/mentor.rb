@@ -4,16 +4,10 @@ class Mentor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  def self.connect_to_linkedin(auth, signed_in_resource=nil)
+  def self.connect_to_linkedin(auth, signed_in_resource = nil)
   	user = Mentor.where(provider: auth.provider, uid: auth.uid).first
   	
   	if user
-		user = Mentor.update(name:auth.info.first_name,
-  							provider:auth.provider,
-  							uid:auth.uid,
-  							email:auth.info.email,
-  							password:Devise.friendly_token[0,20],
-  							)
   		return user
   	else
   		registered_user = Mentor.where(:email => auth.info.email).first_or_create
