@@ -12,10 +12,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'ransack'
 gem 'will_paginate'
+gem 'figaro'
+
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-linkedin'
-gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
