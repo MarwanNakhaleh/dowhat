@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :mentors
   get 'pages/dashboard'
   root 'pages#dashboard'
-  devise_for :mentors, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+  get '/auth/:provider/callback', to: 'sessions#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

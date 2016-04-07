@@ -4,21 +4,11 @@ class Mentor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-	def self.connect_to_linkedin(auth, signed_in_resource = nil)
-		mentor = Mentor.where(:provider => auth.provider, :uid => auth.uid).first
-		if mentor
-			return mentor
-		else
-			registered_mentor = Mentor.where(:email => auth.info.email).first
-			if registered_mentor
-				return registered_mentor
-			else
-				mentor = Mentor.create(name:auth.info.first_name,
-									provider:auth.provider,
-									uid:auth.uid,
-									email:auth.info.email,
-									password:Devise.friendly_token[0,20])
-			end
-		end
-	end
+  def self.find_or_create_from_auth_hash(auth_hash)
+  	mentor = Mentor.where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_create
+  	mentor.update(
+  		name: auth_hash.extra.raw_info.name,
+  		token: auth_hash.credentials.token,
+  		secret: auth_hash.credentials.secret)
+  end
 end

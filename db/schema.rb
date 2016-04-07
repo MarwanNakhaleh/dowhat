@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407194409) do
+ActiveRecord::Schema.define(version: 20160407213830) do
 
   create_table "mentors", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20160407194409) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
+    t.string   "token"
+    t.string   "secret"
   end
 
   add_index "mentors", ["email"], name: "index_mentors_on_email", unique: true
