@@ -13,7 +13,9 @@ class Mentor < ActiveRecord::Base
 			if registered_user
 				return registered_user
 			else
+				full_name = "#{auth.info.first_name} #{auth.info.last_name}"
 				user = Mentor.create(name:auth.info.first_name,
+							occupation:auth.info.headline, 
                             provider:auth.provider,
                             uid:auth.uid,
                             email:auth.info.email,

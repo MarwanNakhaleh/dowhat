@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :mentees
+  
   match '/mentors',   to: 'mentors#index',   via: 'get'
 
   devise_for :mentors, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }, :skip => [:registrations]

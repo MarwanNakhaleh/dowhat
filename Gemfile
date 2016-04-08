@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ransack'
 gem 'will_paginate'
 gem 'figaro'
+gem 'bootstrap-sass'
 
 gem 'devise'
 gem 'omniauth'

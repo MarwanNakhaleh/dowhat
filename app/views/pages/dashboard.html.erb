@@ -1,6 +1,13 @@
-<% if mentor_signed_in? %>
-Signed in as <%= current_mentor.name %>. Not you?
-<%= link_to "Sign out", destroy_mentor_session_path, :method => :delete %>
+<% if mentee_signed_in? %>
+	Signed in as <%= current_mentee.name %>.<br><br> Not you?<br>
+	<%= link_to "Sign out", destroy_mentee_session_path, :method => :delete %>
+<% elsif mentor_signed_in? %>
+	Signed in as <%= current_mentor.name %>.<br><br> Not you?<br>
+	<%= link_to "Sign out", destroy_mentor_session_path, :method => :delete %>
 <% else %>
-<%= link_to "Sign in with Linkedin", mentor_omniauth_authorize_path(:linkedin) %>
+	<h1>Mentees</h1>
+	<%= link_to "Sign in", new_mentee_session_path %>
+	<%= link_to "Sign up", new_mentee_registration_path %>
+	<h1>Mentors</h1>
+	<%= link_to "Sign in with Linkedin", mentor_omniauth_authorize_path(:linkedin) %>
 <% end %>
