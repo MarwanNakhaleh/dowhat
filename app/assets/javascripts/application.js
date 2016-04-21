@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require turbolinks
+//= require jquery_ujs
 
 //= require jquery.min.js
 //= require jquery.dropotron.min.js
@@ -20,5 +21,4 @@
 //= require util.js
 //= require main.js
 
-//= require jquery_ujs
 //= require_tree .
