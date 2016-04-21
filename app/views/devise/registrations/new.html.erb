@@ -1,46 +1,60 @@
-<section id="cta">
-<h2>Sign up</h2>
+<style>
+  h3{
+    color:#666;
+  }
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select :dob, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 16, end_year: Date.today.year - 100}, {required: true} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :biography %><br />
-    <%= f.text_field :bio %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  .special{
+    background-color:#eee;
+  }
+</style>
+<section id="banner">
 </section>
+
+  <section id="main" class="container 75%">
+    <section class="box special">
+      <h2>Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <h3>Name</h3>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <h3>Email</h3>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <h3>Password</h3>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <h3>Password Confirmation</h3>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <h3>Date of Birth</h3>
+        <%= f.date_select :dob, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 16, end_year: Date.today.year - 100}, {required: true} %>
+      </div>
+
+      <div class="field">
+        <h3>Biography</h3>
+        <%= f.text_area :bio %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+    </section>
+  </section>
