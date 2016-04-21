@@ -1,0 +1,47 @@
+<style>
+	h4{
+		text-decoration: none;
+	}
+
+	h4 a:hover{
+		color: #333;
+	}
+</style>
+
+<section id="banner">
+	<% if mentee_signed_in? %>
+		<h2>Looking for a mentor?</h2>
+		<ul class="actions">
+			<li><%= link_to "Search for mentors", mentors_path, class: "button" %></li>
+			<li><%= link_to "Sign out", destroy_mentee_session_path, :method => :delete, class: "button" %></li>
+		</ul>
+	<% elsif mentor_signed_in? %>
+		<h2>Signed in as <%= current_mentor.name %></h2>
+		<ul class="actions">
+			<li><%= link_to "Sign out", destroy_mentor_session_path, :method => :delete, class: "button" %></li>
+		</ul>
+	<% else %>
+	<h2>Sign up for free today!</h2>
+	<ul class="actions">
+		<li><%= link_to "Mentee Sign In", new_mentee_session_path, class: "button" %></li>
+		<li><%= link_to "Mentor Sign In", mentor_omniauth_authorize_path(:linkedin), class: "button" %></li>
+	</ul>
+	<% end %>
+</section>
+
+<section id="main" class="container">
+	<section class="box special">
+		<header class="major">
+			<h2>Dashboard</h2>
+			<% if mentee_signed_in? %>
+				<h4>Signed in as <%= current_mentee.name %></h4>
+				<h4>Birthday: <%= current_mentee.dob %></h4>
+				<h4>Bio: <%= current_mentee.bio %></h4>
+				<h4><%= link_to "Edit Profile", edit_mentee_registration_path %></h4>
+			<% elsif mentor_signed_in? %>
+				<p>Signed in as <%= current_mentor.name %></p>
+				<p>Occupation: <%= current_mentor.occupation %></p>
+			<% end %>
+		</header>
+	</section>
+</section>
