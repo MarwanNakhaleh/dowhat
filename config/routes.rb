@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       patch 'mentors/:id' => 'devise/registrations#update', :as => 'user_registration'
     end
   
-  match '/mentees/sign_out', to: 'devise/sessions#destroy', via: 'delete'
 
   match '/dashboard', to: 'pages#dashboard', via: 'get'
   match '/resources', to: 'pages#resources', via: 'get'
