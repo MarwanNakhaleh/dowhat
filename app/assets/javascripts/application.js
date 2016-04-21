@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require turbolinks
 
 //= require jquery.min.js
@@ -21,4 +20,5 @@
 //= require util.js
 //= require main.js
 
+//= require jquery_ujs
 //= require_tree .

@@ -7,9 +7,13 @@
 			<li><%= link_to "Contact", contact_url %></li>
 			<% if mentee_signed_in? %>
 			<li><%= link_to "View Mentors", mentors_url %></li>
-			<li><%= link_to "Sign out", destroy_mentee_session_path, :method => :delete, class: "button" %></li>
+			<li><%= link_to "Edit Profile", edit_mentee_registration_path %>
+			<li><%= link_to "Sign out", destroy_mentee_session_path, method: :delete %></li>
 			<% elsif mentor_signed_in? %>
 			<li><%= link_to "Sign out", destroy_mentor_session_path, :method => :delete, class: "button" %></li>
+			<% else %>
+			<li><%= link_to "Mentee Sign In", new_mentee_session_path %></li>
+			<li><%= link_to "Mentor Sign In", mentor_omniauth_authorize_path(:linkedin) %></li>
 			<% end %>
 		</ul>
 	</nav>

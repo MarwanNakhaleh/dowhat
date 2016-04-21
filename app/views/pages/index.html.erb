@@ -1,6 +1,6 @@
 <section id="banner">
 	<% if mentee_signed_in? %>
-		<h2>Looking for a mentor?</h2>
+		<h2>Looking for a mentor, <%= current_mentee.name.split.first %>?</h2>
 		<ul class="actions">
 			<li><%= link_to "Search for mentors", mentors_path, class: "button" %></li>
 			<li><%= link_to "Sign out", destroy_mentee_session_path, :method => :delete, class: "button" %></li>
