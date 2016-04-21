@@ -3030,7 +3030,7 @@
 	#banner {
 		background-attachment: scroll,							fixed;
 		background-color: #666;
-		background-image: asset-data-url("banner.jpg");
+		background-image: asset-data-url("sky.jpg");
 		background-position: top left,						center center;
 		background-repeat: repeat,							no-repeat;
 		background-size: auto,							cover;
@@ -3761,3 +3761,7 @@
 			}
 
 	}
+
+no-hover:hover{
+	background-color:transparent;
+}

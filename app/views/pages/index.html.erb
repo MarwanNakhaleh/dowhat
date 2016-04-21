@@ -1,0 +1,56 @@
+<section id="banner">
+	<% if mentee_signed_in? %>
+		<h2>Looking for a mentor?</h2>
+		<ul class="actions">
+			<li><%= link_to "Search for mentors", mentors_path, class: "button" %></li>
+			<li><%= link_to "Sign out", destroy_mentee_session_path, :method => :delete, class: "button" %></li>
+		</ul>
+	<% elsif mentor_signed_in? %>
+		<h2>Signed in as <%= current_mentor.name %></h2>
+		<ul class="actions">
+			<li><%= link_to "Sign out", destroy_mentor_session_path, :method => :delete, class: "button" %></li>
+		</ul>
+	<% else %>
+	<h2>Sign up for free today!</h2>
+	<ul class="actions">
+		<li><%= link_to "Mentee Sign In", new_mentee_session_path, class: "button" %></li>
+		<li><%= link_to "Mentor Sign In", mentor_omniauth_authorize_path(:linkedin), class: "button" %></li>
+	</ul>
+	<% end %>
+</section>
+
+<section id="main" class="container 75%">
+	<section class="box special">
+		<header class="major">
+			<h2>Why do you need a mentor?</h2>
+		</header>
+	</section>
+
+	<section class="box special features">
+		<div class="features-row">
+			<section>
+				<span class="icon major fa-bolt accent2"></span>
+				<h3>Experience</h3>
+				<p>They won’t have all the answers, but making use of the experience of someone beyond your years will undoubtedly put you in a position to gain experience and achieve your potential!</p>
+			</section>
+			<section>
+				<span class="icon major fa-area-chart accent3"></span>
+				<h3>Network</h3>
+				<p>Having a mentor will allow you to build your own network of professionals as well as tap into their network and resources. This can be an invaluable asset.</p>
+			</section>
+		</div>
+		<div class="features-row">
+			<section>
+				<span class="icon major fa-cloud accent4"></span>
+				<h3>Insight</h3>
+				<p>Because of their experience in the professional world, a mentor will be able to provide you with insight that they have accumulated over a number of years.</p>
+			</section>
+			<section>
+				<span class="icon major fa-lock accent5"></span>
+				<h3>Encouragement</h3>
+				<p>Having someone who is already working within your field of interest not only proves that it is possible to do what you want, but they will be able to encourage you along the way.</p>
+			</section>
+		</div>
+	</section>
+
+</section>

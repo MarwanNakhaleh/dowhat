@@ -10,10 +10,12 @@ Rails.application.routes.draw do
       patch 'mentors/:id' => 'devise/registrations#update', :as => 'user_registration'
     end
   
-  get 'pages/dashboard'
-  get 'pages/about'
-  get 'pages/contact'
-  root 'pages#dashboard'
+  match '/dashboard', to: 'pages#dashboard', via: 'get'
+  match '/resources', to: 'pages#resources', via: 'get'
+  match '/index', to: 'pages#index', via: 'get'
+  match '/about', to: 'pages#about', via: 'get'
+  match '/contact', to: 'pages#contact', via: 'get'
+  root 'pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
