@@ -1,13 +1,56 @@
-<% if mentee_signed_in? %>
-	Signed in as <%= current_mentee.name %>.<br><br> Not you?<br>
-	<%= link_to "Sign out", destroy_mentee_session_path, :method => :delete %>
-<% elsif mentor_signed_in? %>
-	Signed in as <%= current_mentor.name %>.<br><br> Not you?<br>
-	<%= link_to "Sign out", destroy_mentor_session_path, :method => :delete %>
-<% else %>
-	<h1>Mentees</h1>
-	<%= link_to "Sign in", new_mentee_session_path %>
-	<%= link_to "Sign up", new_mentee_registration_path %>
-	<h1>Mentors</h1>
-	<%= link_to "Sign in with Linkedin", mentor_omniauth_authorize_path(:linkedin) %>
-<% end %>
+<section id="banner">
+	<% if mentee_signed_in? %>
+		<h2>Looking for a mentor?</h2>
+		<ul class="actions">
+			<li><%= link_to "Search for mentors", mentors_path, class: "button" %></li>
+			<li><%= link_to "Sign out", destroy_mentee_session_path, :method => :delete, class: "button" %></li>
+		</ul>
+	<% elsif mentor_signed_in? %>
+		<h2>Signed in as <%= current_mentor.name %></h2>
+		<ul class="actions">
+			<li><%= link_to "Sign out", destroy_mentor_session_path, :method => :delete, class: "button" %></li>
+		</ul>
+	<% else %>
+	<h2>Sign up for free today!</h2>
+	<ul class="actions">
+		<li><%= link_to "Mentee Sign In", new_mentee_session_path, class: "button" %></li>
+		<li><%= link_to "Mentor Sign In", mentor_omniauth_authorize_path(:linkedin), class: "button" %></li>
+	</ul>
+	<% end %>
+</section>
+
+<section id="main" class="container 75%">
+	<section class="box special">
+		<header class="major">
+			<h2>Why do you need a mentor?</h2>
+		</header>
+	</section>
+
+	<section class="box special features">
+		<div class="features-row">
+			<section>
+				<span class="icon major fa-bolt accent2"></span>
+				<h3>Magna etiam</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			<section>
+				<span class="icon major fa-area-chart accent3"></span>
+				<h3>Ipsum dolor</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+		</div>
+		<div class="features-row">
+			<section>
+				<span class="icon major fa-cloud accent4"></span>
+				<h3>Sed feugiat</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+			<section>
+				<span class="icon major fa-lock accent5"></span>
+				<h3>Enim phasellus</h3>
+				<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+			</section>
+		</div>
+	</section>
+
+</section>

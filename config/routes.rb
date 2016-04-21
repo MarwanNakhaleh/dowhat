@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   devise_for :mentees
   
   match '/mentors',   to: 'mentors#index',   via: 'get'
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     end
   
   get 'pages/dashboard'
+  get 'pages/about'
+  get 'pages/contact'
   root 'pages#dashboard'
 
   # The priority is based upon order of creation: first created -> highest priority.

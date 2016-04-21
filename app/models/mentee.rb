@@ -5,4 +5,6 @@ class Mentee < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :email, :password, :password_confirmation, :dob, :bio, :name
   validates_uniqueness_of :email
+
+  has_many :reviews
 end
